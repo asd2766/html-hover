@@ -67,6 +67,8 @@
     .content:hover .slideUp {
       transform: translateY(-10px);
       transition: transform .8s;
+      position: relative;
+      z-index: 99;
     }
     
     .content p {
@@ -168,10 +170,16 @@
     <div class="content">
       <div class="slideUp">
         <p>欢迎观看宠物狗系列</p>
-        <a href="#">点击登录</a>
+        <a href="#" onclick="clickForLogin()">点击登录</a>
       </div>
     </div>
   </div>
+
+  <script>
+    function clickForLogin() {
+      alert('恭喜您,登录成功');
+    }
+  </script>
 </body>
 
 </html>
