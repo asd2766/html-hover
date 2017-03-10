@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>hover效果</title>
+  <style lang="css">
+    body {
+      padding: 0;
+      margin: 0;
+      background: #000;
+    }
+    
+    *,
+     ::before,
+     ::after {
+      box-sizing: border-box;
+    }
+    
+    .main {
+      width: 500px;
+      height: 300px;
+      margin: 0 auto;
+      margin-top: 50px;
+      padding-top: 1px;
+      position: relative;
+    }
+    
+    .bg {
+      position: absolute;
+      top: 0;
+      height: 0;
+      width: 100%;
+      height: 100%;
+      background: url('./000006.jpg') no-repeat;
+      background-size: cover;
+      z-index: -1;
+    }
+    
+    .main:hover .bg {
+      -webkit-filter: blur(2px);
+      /* Chrome, Opera */
+      -moz-filter: blur(2px);
+      -ms-filter: blur(2px);
+      filter: blur(2px);
+    }
+    
+    .content {
+      width: 440px;
+      height: 240px;
+      margin: 30px;
+      font-size: 20px;
+      text-align: center;
+      position: relative;
+      padding-top: 40px;
+      overflow: hidden;
+      opacity: 0;
+      transition: all .8s;
+    }
+    
+    .content:hover {
+      opacity: 1;
+    }
+    
+    .content:hover .slideUp {
+      transform: translateY(-10px);
+      transition: transform .8s;
+    }
+    
+    .content p {
+      font-size: 30px;
+      background: -webkit-linear-gradient(left, #FF6666, #FFCC99 25%, #66CCFF 50%, #FFCC99 75%, #FF6666);
+      -webkit-background-clip: text;
+      /*文字填充色为透明*/
+      -webkit-text-fill-color: transparent;
+      /*只有webkit内核支持text的剪切模式*/
+      color: transparent;
+      /*背景图片向水平方向扩大一倍，这样background-position才有移动与变化的空间*/
+      -webkit-background-size: 200% 100%;
+      background-size: 200% 100%;
+      /* 动画 */
+      animation: myAnimate 4s infinite linear;
+      margin-bottom: 10px;
+    }
+    
+    .content a {
+      text-decoration: none;
+      color: blue;
+      animation: colorAnimate 10s infinite linear;
+    }
+    
+    .content::before {
+      content: '';
+      /*display: block;*/
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 0;
+      transition: all .8s;
+      overflow: hidden;
+      visibility: hidden;
+    }
+    
+    .content::after {
+      content: '';
+      /*display: block;*/
+      position: absolute;
+      top: 0;
+      left: 50%;
+      height: 100%;
+      width: 0;
+      transition: all .8s;
+      overflow: hidden;
+      visibility: hidden;
+    }
+    
+    .content:hover::before {
+      border: 3px solid #fff;
+      border-width: 0 3px;
+      height: 100%;
+      top: 0;
+      visibility: visible;
+    }
+    
+    .content:hover::after {
+      border: 3px solid #fff;
+      border-width: 3px 0;
+      width: 100%;
+      left: 0;
+      visibility: visible;
+    }
+    
+    @keyframes myAnimate {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: -100% 0;
+      }
+    }
+    
+    @keyframes colorAnimate {
+      0% {
+        color: blue;
+      }
+      20% {
+        color: #FF6666;
+      }
+      60% {
+        color: green;
+      }
+      80% {
+        color: #FF6666;
+      }
+      100% {
+        color: blue;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main">
+    <div class="bg"></div>
+    <div class="content">
+      <div class="slideUp">
+        <p>欢迎观看宠物狗系列</p>
+        <a href="#">点击登录</a>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
